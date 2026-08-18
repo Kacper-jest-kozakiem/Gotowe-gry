@@ -235,7 +235,8 @@ dzien = 1
 try:
 
     while True:
-        stan_gry.tekst_fabuly = f"=== DZIEŃ {dzien} ==="
+        stan_gry.tekst_fabuly = f"=== DZIEŃ {dzien} ===\n"
+        wydarzenia_turowe()
         czekaj_na_enter()
 
         # Scena 1: Nadgodziny
