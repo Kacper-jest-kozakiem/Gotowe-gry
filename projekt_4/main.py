@@ -17,8 +17,18 @@ def czekaj_na_enter(tekst_promp="Wciśnij Enter, aby kontynuować..."):
     """Pokazuje widok Live i czeka na Enter na dole pełnego ekranu."""
     koniec_gry = False
 
-    if stan_gry.kieszonkowe <= 0 or stan_gry.psychika <= 0:
+    if stan_gry.psychika <= 0:
         stan_gry.tekst_fabuly += "\n\nGAME OVER! Janusz Cię wykończył."
+        tekst_promp = "Wciśnij Enter, aby zakończyć grę..."
+        koniec_gry = True
+
+    elif stan_gry.kieszonkowe <= 0:
+        stan_gry.tekst_fabuly += "\n\nGAME OVER! Nie masz kasy."
+        tekst_promp = "Wciśnij Enter, aby zakończyć grę..."
+        koniec_gry = True
+
+    elif stan_gry.zaczerwienienie_janusza >= 100:
+        stan_gry.tekst_fabuly += "\n\nGAME OVER! wyleciałeś z roboty."
         tekst_promp = "Wciśnij Enter, aby zakończyć grę..."
         koniec_gry = True
 
@@ -235,7 +245,7 @@ dzien = 1
 try:
 
     while True:
-        stan_gry.tekst_fabuly = f"=== DZIEŃ {dzien} ===\n"
+        stan_gry.tekst_fabuly = f"=== DZIEŃ {dzien} ==="
         wydarzenia_turowe()
         czekaj_na_enter()
 
